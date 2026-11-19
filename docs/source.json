@@ -6,14 +6,14 @@
     {
       "name": "Keyword Tab Killer",
       "bundleIdentifier": "com.keywordblocker.app",
-      "developerName": "USERNAME",
+      "developerName": "david-toma",
       "subtitle": "Close Safari tabs containing blocked words",
       "version": "1.0.0",
       "versionDate": "2026-11-19",
       "versionDescription": "Initial release",
-      "downloadURL": "https://github.com/USERNAME/REPO/releases/latest/download/KeywordBlocker.ipa",
+      "downloadURL": "https://github.com/david-toma/KeywordTabKiller/releases/latest/download/KeywordBlocker.ipa",
       "localizedDescription": "Safari extension that instantly closes any tab whose URL or search query contains a word from your block list.",
-      "iconURL": "https://USERNAME.github.io/REPO/icon.png",
+      "iconURL": "https://david-toma.github.io/KeywordTabKiller/icon.png",
       "tintColor": "D62828",
       "size": 1000000,
       "minOSVersion": "15.0"
