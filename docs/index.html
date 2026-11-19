@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyword Tab Killer</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1c1c1e; --card:#f2f2f7; --accent:#d62828; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#000; --fg:#f2f2f7; --card:#1c1c1e; } }
+  body { margin:0; font:16px/1.5 -apple-system,system-ui,sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:520px; margin:0 auto; padding:32px 20px 64px; }
+  img { width:96px; height:96px; border-radius:22px; }
+  h1 { margin:12px 0 4px; }
+  .btn { display:block; text-align:center; padding:14px; margin:10px 0; border-radius:12px;
+         background:var(--accent); color:#fff; text-decoration:none; font-weight:600; }
+  .btn.alt { background:var(--card); color:var(--fg); }
+  ol { padding-left:20px; background:var(--card); border-radius:12px; padding:16px 16px 16px 36px; }
+  code { word-break:break-all; font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="icon.png" alt="">
+  <h1>Keyword Tab Killer</h1>
+  <p>Safari extension that closes a tab the moment its URL or search contains a blocked word.</p>
+
+  <a class="btn" id="altstore" href="#">Add to AltStore</a>
+  <a class="btn alt" id="sidestore" href="#">Add to SideStore</a>
+  <a class="btn alt" id="ipa" href="#">Download .ipa</a>
+  <p>Source URL: <code id="src"></code></p>
+
+  <h2>After installing</h2>
+  <ol>
+    <li>Open <b>Settings → Safari → Extensions</b> (iOS 18+: <b>Settings → Apps → Safari → Extensions</b>).</li>
+    <li>Tap <b>Keyword Tab Killer</b> and turn it <b>On</b>.</li>
+    <li>Set <b>All Websites</b> to <b>Allow</b> (and enable it for Private Browsing if you want).</li>
+    <li>Open the app, add your blocked words, then browse in Safari.</li>
+  </ol>
+</main>
+<script>
+  var base = location.href.replace(/[#?].*$/, "").replace(/[^\/]*$/, "");
+  var src = base + "source.json";
+  document.getElementById("src").textContent = src;
+  document.getElementById("altstore").href = "altstore://source?url=" + src;
+  document.getElementById("sidestore").href = "sidestore://source?url=" + src;
+  var ipa = "#";
+  if (/\.github\.io$/.test(location.hostname)) {
+    var owner = location.hostname.split(".")[0];
+    var repo = location.pathname.split("/")[1];
+    ipa = "https://github.com/" + owner + "/" + repo + "/releases/latest/download/KeywordBlocker.ipa";
+  }
+  document.getElementById("ipa").href = ipa;
+</script>
+</body>
+</html>

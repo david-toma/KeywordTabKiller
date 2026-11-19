@@ -1,0 +1,62 @@
+name: KeywordTabKiller
+
+options:
+  bundleIdPrefix: com.keywordblocker
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: ""
+    CODE_SIGNING_REQUIRED: "NO"
+    CODE_SIGNING_ALLOWED: "NO"
+    DEVELOPMENT_TEAM: ""
+    TARGETED_DEVICE_FAMILY: "1,2"
+    GENERATE_INFOPLIST_FILE: "NO"
+
+targets:
+  KeywordBlocker:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+        excludes:
+          - "Info.plist"
+          - "*.entitlements"
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_NAME: KeywordBlocker
+        PRODUCT_BUNDLE_IDENTIFIER: com.keywordblocker.app
+        INFOPLIST_FILE: App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: App/KeywordBlocker.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - target: KeywordBlockerExtension
+        embed: true
+
+  KeywordBlockerExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Extension
+        excludes:
+          - "Resources/**"
+          - "Info.plist"
+          - "*.entitlements"
+      - path: Extension/Resources
+        buildPhase: resources
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_NAME: KeywordBlockerExtension
+        PRODUCT_BUNDLE_IDENTIFIER: com.keywordblocker.app.extension
+        INFOPLIST_FILE: Extension/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Extension/KeywordBlockerExtension.entitlements
+        SKIP_INSTALL: "YES"
+        APPLICATION_EXTENSION_API_ONLY: "YES"
